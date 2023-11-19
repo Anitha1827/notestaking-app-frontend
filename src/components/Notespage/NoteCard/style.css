@@ -1,0 +1,5 @@
+.card {
+  background: #dce358;
+  background: -webkit-linear-gradient(to right, #458649, #dce358);
+  background: linear-gradient(to right, #45b649, #dce358);
+}
