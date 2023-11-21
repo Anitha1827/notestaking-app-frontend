@@ -73,10 +73,11 @@ export const createNotes = (obj) => async (dispatch, getState) => {
 
 export const deleteNotes = (id) => async (dispatch, getState) => {
   const token = selectToken(getState());
+  console.log("testing id:", id);
 
   dispatch({ type: DELETE_NOTES_LOADING });
   try {
-    const res = await axios("http://localhost:4000/note/delete", {
+    const res = await axios(`http://localhost:4000/note/delete/${id}`, {
       method: "delete",
       headers: {
         Authorization: token,
@@ -106,7 +107,7 @@ export const updateNotes = (id, obj) => async (dispatch, getState) => {
 
   dispatch({ type: UPDATE_NOTES_LOADING });
   try {
-    const res = await axios("http://localhost:4000/note", {
+    const res = await axios(`http://localhost:4000/note/update/${id}`, {
       method: "patch",
       data: {
         ...obj,
