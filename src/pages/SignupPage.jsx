@@ -28,11 +28,14 @@ const SignupPage = () => {
 
   const handleSignup = async () => {
     try {
-      let response = await axios.post("http://localhost:4000/user/register", {
-        name,
-        email,
-        password,
-      });
+      let response = await axios.post(
+        `https://note-takking-app-backend-main.vercel.app/user/register`,
+        {
+          name,
+          email,
+          password,
+        }
+      );
 
       let { message, status } = response.data;
       if (status === 1) {

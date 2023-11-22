@@ -23,12 +23,15 @@ export const getNotes = () => async (dispatch, getState) => {
 
   dispatch({ type: GET_NOTES_LOADING });
   try {
-    const res = await axios("http://localhost:4000/note", {
-      method: "get",
-      headers: {
-        Authorization: token,
-      },
-    });
+    const res = await axios(
+      "https://note-takking-app-backend-main.vercel.app",
+      {
+        method: "get",
+        headers: {
+          Authorization: token,
+        },
+      }
+    );
 
     const { status, message, data } = res.data;
     console.log(message);
@@ -48,13 +51,16 @@ export const createNotes = (obj) => async (dispatch, getState) => {
   const token = selectToken(getState());
   dispatch({ type: CREATE_NOTES_LOADING });
   try {
-    const res = await axios("http://localhost:4000/note/create", {
-      method: "post",
-      data: obj,
-      headers: {
-        Authorization: token,
-      },
-    });
+    const res = await axios(
+      "https://note-takking-app-backend-main.vercel.app/note/create",
+      {
+        method: "post",
+        data: obj,
+        headers: {
+          Authorization: token,
+        },
+      }
+    );
 
     const { status, message } = res.data;
     console.log(message);
@@ -77,15 +83,18 @@ export const deleteNotes = (id) => async (dispatch, getState) => {
 
   dispatch({ type: DELETE_NOTES_LOADING });
   try {
-    const res = await axios(`http://localhost:4000/note/delete/${id}`, {
-      method: "delete",
-      headers: {
-        Authorization: token,
-      },
-      data: {
-        id: id,
-      },
-    });
+    const res = await axios(
+      `https://note-takking-app-backend-main.vercel.app/note/delete/${id}`,
+      {
+        method: "delete",
+        headers: {
+          Authorization: token,
+        },
+        data: {
+          id: id,
+        },
+      }
+    );
 
     const { status, message } = res.data;
     console.log(message);
@@ -107,16 +116,19 @@ export const updateNotes = (id, obj) => async (dispatch, getState) => {
 
   dispatch({ type: UPDATE_NOTES_LOADING });
   try {
-    const res = await axios(`http://localhost:4000/note/update/${id}`, {
-      method: "patch",
-      data: {
-        ...obj,
-        id: id,
-      },
-      headers: {
-        Authorization: token,
-      },
-    });
+    const res = await axios(
+      `https://note-takking-app-backend-main.vercel.app/note/update/${id}`,
+      {
+        method: "patch",
+        data: {
+          ...obj,
+          id: id,
+        },
+        headers: {
+          Authorization: token,
+        },
+      }
+    );
 
     const { status, message } = res.data;
     console.log(message);
