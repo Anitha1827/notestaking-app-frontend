@@ -29,7 +29,7 @@ const SignupPage = () => {
   const handleSignup = async () => {
     try {
       let response = await axios.post(
-        `https://note-takking-app-backend-main.vercel.app/user/register`,
+        `https://note-backend-taupe.vercel.app/user/register`,
         {
           name,
           email,

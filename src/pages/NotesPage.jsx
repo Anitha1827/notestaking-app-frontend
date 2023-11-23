@@ -27,6 +27,7 @@ const NotesPage = () => {
   const [title, setTitle] = useState("");
   const [content, setContent] = useState("");
   const [searchTerm, setSearchTerm] = useState("");
+  const [user, setUser] = useState("");
 
   const { loading, error, data } = useSelector((state) => state.noteReducer);
   console.log(data);
@@ -48,7 +49,8 @@ const NotesPage = () => {
   );
 
   const createNote = () => {
-    dispatch(createNotes({ title, content }));
+    setUser(localStorage.getItem("id"));
+    dispatch(createNotes({ title, content, user }));
     onClose();
   };
   return (
@@ -95,6 +97,7 @@ const NotesPage = () => {
               onChange={(e) => setTitle(e.target.value)}
               placeholder={"pleaser enter title"}
             ></Input>
+
             <Textarea
               mt={8}
               value={content}

@@ -10,14 +10,15 @@ export const getUser = (obj) => async (dispatch) => {
 
   try {
     let response = await axios.post(
-      "https://note-takking-app-backend-main.vercel.app/user/login",
+      "https://note-backend-taupe.vercel.app/user/login",
       obj
     );
-    console.log(response);
-    let { message, token, status } = response.data;
+
+    let { message, token, status, user } = response.data;
 
     if (status == 1) {
       dispatch({ type: LOGIN_USER_SUCCESS, payload: token });
+      localStorage.setItem("id", user._id);
     } else {
       dispatch({ type: LOGIN_USER_ERROR });
     }

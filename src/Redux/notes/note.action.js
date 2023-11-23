@@ -23,8 +23,10 @@ export const getNotes = () => async (dispatch, getState) => {
 
   dispatch({ type: GET_NOTES_LOADING });
   try {
+    let tempId = localStorage.getItem("id");
+
     const res = await axios(
-      "https://note-takking-app-backend-main.vercel.app",
+      `https://note-backend-taupe.vercel.app/note/get/${tempId}`,
       {
         method: "get",
         headers: {
@@ -51,16 +53,33 @@ export const createNotes = (obj) => async (dispatch, getState) => {
   const token = selectToken(getState());
   dispatch({ type: CREATE_NOTES_LOADING });
   try {
-    const res = await axios(
-      "https://note-takking-app-backend-main.vercel.app/note/create",
+    // console.log("line63res", res);
+    // console.log("line64token", token);
+    console.log("line65obj", obj);
+
+    const res = await fetch(
+      `https://note-backend-taupe.vercel.app/note/create`,
+      //http://localhost:4000
       {
-        method: "post",
-        data: obj,
+        method: "POST",
+        body: JSON.stringify(obj),
         headers: {
           Authorization: token,
+          "Content-Type": "application/json",
         },
       }
     );
+
+    // const res = await axios(
+    //   "",
+    //   {
+    //     method: "post",
+    //     data: obj,
+    //     headers: {
+
+    //     },
+    //   }
+    // );
 
     const { status, message } = res.data;
     console.log(message);
@@ -84,7 +103,7 @@ export const deleteNotes = (id) => async (dispatch, getState) => {
   dispatch({ type: DELETE_NOTES_LOADING });
   try {
     const res = await axios(
-      `https://note-takking-app-backend-main.vercel.app/note/delete/${id}`,
+      `https://note-backend-taupe.vercel.app/note/delete/${id}`,
       {
         method: "delete",
         headers: {
@@ -117,7 +136,7 @@ export const updateNotes = (id, obj) => async (dispatch, getState) => {
   dispatch({ type: UPDATE_NOTES_LOADING });
   try {
     const res = await axios(
-      `https://note-takking-app-backend-main.vercel.app/note/update/${id}`,
+      `https://note-backend-taupe.vercel.app/note/update/${id}`,
       {
         method: "patch",
         data: {
