@@ -4,14 +4,12 @@ import {
   Box,
   Flex,
   Avatar,
-  Text,
   Button,
   Menu,
   MenuButton,
   MenuList,
   MenuItem,
   MenuDivider,
-  useDisclosure,
   useColorModeValue,
   Stack,
   useColorMode,
@@ -24,7 +22,7 @@ import { LOGOUT } from "../../../Redux/user/user.types";
 
 export default function Navbar() {
   const { colorMode, toggleColorMode } = useColorMode();
-  const { isOpen, onOpen, onClose } = useDisclosure();
+  // const { isOpen, onOpen, onClose } = useDisclosure();
   const dispatch = useDispatch();
   const { auth, token, loading, error } = useSelector(
     (state) => state.userReducer

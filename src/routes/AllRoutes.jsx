@@ -13,6 +13,7 @@ const AllRoutes = () => {
       <Route path="/register" element={<SignupPage />}></Route>
       <Route path="/login" element={<LoginPage />}></Route>
       <Route
+        exact
         path="/notes"
         element={
           <PrivateRoute>

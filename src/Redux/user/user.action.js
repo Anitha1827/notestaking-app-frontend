@@ -19,6 +19,7 @@ export const getUser = (obj) => async (dispatch) => {
     if (status == 1) {
       dispatch({ type: LOGIN_USER_SUCCESS, payload: token });
       localStorage.setItem("id", user._id);
+      localStorage.setItem("token", token);
     } else {
       dispatch({ type: LOGIN_USER_ERROR });
     }

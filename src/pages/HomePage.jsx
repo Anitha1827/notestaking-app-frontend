@@ -1,4 +1,4 @@
-import { Box, Heading, Image, Text, interactivity } from "@chakra-ui/react";
+import { Box, Heading, Image, Text } from "@chakra-ui/react";
 import React from "react";
 import note from "../assets/images/stickynote.png";
 

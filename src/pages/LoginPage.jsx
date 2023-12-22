@@ -25,11 +25,10 @@ const LoginPage = () => {
   const { auth, token, loading, error } = useSelector(
     (state) => state.userReducer
   );
-  console.log(auth, token);
+  // console.log(auth, token);
   if (auth) {
     nav("/notes");
   }
-
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const dispatch = useDispatch();

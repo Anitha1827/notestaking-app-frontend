@@ -4,7 +4,6 @@ import {
   FormControl,
   FormLabel,
   Input,
-  Checkbox,
   Stack,
   Button,
   Heading,
@@ -15,8 +14,6 @@ import {
 } from "@chakra-ui/react";
 import React, { useState } from "react";
 import loginImg from "../assets/images/login-concept-illustration.png";
-import { useDispatch, useSelector } from "react-redux";
-import { getUser } from "../Redux/user/user.action";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 
